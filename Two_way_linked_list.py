@@ -125,3 +125,16 @@ class dLinkedList:
             temp.back.next = temp.next
             temp.next.back = temp.back
             del(temp)
+    def show(self):
+        if self.head is None:
+            print("empty")
+            return None
+        elif self.head.next == self.head:
+            print(self.head.data)
+            return
+        else:
+            temp = self.head
+            while temp.next != self.head:
+                print(temp.data)
+                temp = temp.next
+            
