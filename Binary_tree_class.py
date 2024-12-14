@@ -80,7 +80,7 @@ class BinaryTree:
             self.pinsert_after_l(node.Rchild, x, data)
 
     def insert_after_r(self, x, data):
-        self.pinsert_after_r(self.node, x, data)
+        self.pinsert_after_r(self.root, x, data)
 
     def pinsert_after_r(self, node, x, data):
         if node:
@@ -119,28 +119,28 @@ class BinaryTree:
             print('empty')
             return None
         else:
-            self.pdelete(self.root, x)
-            
+            self.pdelete(self.root, x)    
     def pdelete(self, node, x):
-        if node.Lchild:
-            if node.Lchild == x:
-                del(node.Lchild)
-                node.Lchild = None
-                return None
-            self.pdelete(node.Lchild, x)
-            self.pdelete(node.Rchild, x)
-        
-        if node.Rchild:
-            if node.Rchild == x:
-                del(node.Rchild)
-                node.Rchild = None
-                return None
-            self.pdelete(node.Lchild, x)
-            self.pdelete(node.Rchild, x)
-        
-        if node.data == x:
-            node = None
-            return
+        if node != None:
+            if node.Lchild:
+                if node.Lchild.data == x:
+                    del(node.Lchild)
+                    node.Lchild = None
+                    return None
+                self.pdelete(node.Lchild, x)
+                self.pdelete(node.Rchild, x)
+            
+            if node.Rchild:
+                if node.Rchild.data == x:
+                    del(node.Rchild)
+                    node.Rchild = None
+                    return None
+                self.pdelete(node.Lchild, x)
+                self.pdelete(node.Rchild, x)
+            
+            if node.data == x:
+                node = None
+                return
         
     def delete_left_x(self, x):
         if self.root is None:
@@ -149,47 +149,54 @@ class BinaryTree:
         else:
             self.pdelete_left_x(self.root, x)
     def pdelete_left_x(self, node, x):
-        if node.Lchild:
-            if node.Lchild == x:
-                if node.Lchild.Lchild != None:
-                    del(node.Lchild.Lchild)
-                    node.Lchild.Lchild = None
-                    return
-            self.pdelete_left_x(node.Lchild, x)
-            self.pdelete_left_x(node.Rchild, x)
-        
-        if node.Rchild:
-            if node.Rchild == x:
-                if node.Rchild.Lchild != None:
-                    del(node.Rchild.Lchild)
-                    node.Rchild.Lchild = None
-                    return
-            self.pdelete_left_x(node.Lchild, x)
-            self.pdelete_left_x(node.Rchild, x)
-        
-        if node.data == x:
-            if node.Lchild != None:
-                node.Lchild = None
-                return    
+        if node != None:
+            if node.Lchild:
+                if node.Lchild.data == x:
+                    if node.Lchild.Lchild != None:
+                        del(node.Lchild.Lchild)
+                        node.Lchild.Lchild = None
+                        return
+                self.pdelete_left_x(node.Lchild, x)
+                self.pdelete_left_x(node.Rchild, x)
+            
+            if node.Rchild:
+                if node.Rchild.data == x:
+                    if node.Rchild.Lchild != None:
+                        del(node.Rchild.Lchild)
+                        node.Rchild.Lchild = None
+                        return
+                self.pdelete_left_x(node.Lchild, x)
+                self.pdelete_left_x(node.Rchild, x)
+            
+            if node.data == x:
+                if node.Lchild != None:
+                    node.Lchild = None
+                    return 
     def delete_right_x(self, x):
         if self.root is None:
             print("empty")
         else:
             return self.pdelete_right_x(self.root, x)
     def pdelete_right_x(self, node, x):
-        if node.Lchild:
-            if node.Lchild == x:
-                if node.Lchild.Rchild != None:
-                    del(node.Lchild.Rchild)
-                    node.Lchild.Rchild = None
+        if node != None:
+            if node.Lchild:
+                if node.Lchild.data == x:
+                    if node.Lchild.Rchild != None:
+                        del(node.Lchild.Rchild)
+                        node.Lchild.Rchild = None
+                        return
+                self.pdelete_right_x(node.Lchild, x)
+                self.pdelete_right_x(node.Rchild, x)
+            if node.Rchild:
+                if node.Rchild.data == x:
+                    if node.Rchild.Rchild != None:
+                        del(node.Rchild.Rchild)
+                        node.Rchild.Rchild = None
+                        return
+                self.pdelete_right_x(node.Lchild, x)
+                self.pdelete_right_x(node.Rchild, x)
+            if node.data == x:
+                if node.Rchild != None:
+                    node.Rchild = None
                     return
-        if node.Rchild:
-            if node.Rchild == x:
-                if node.Rchild.Rchild != None:
-                    del(node.Rchild.Rchild)
-                    node.Rchild.Rchild = None
-                    return
-        if node.data == x:
-            if node.Rchild != None:
-                node.Rchild = None
-                return
+            
