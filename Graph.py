@@ -177,7 +177,7 @@ class Graph:
                     for neighbor in range(self.vertices - 1, -1, -1):
                         if self.adj_matrix[current][neighbor] == 1 and not visited[neighbor]:
                             stack.push(neighbor)
-            print(f"FFS starting from vertex {start}: ", end='')
+            print(f"DFS starting from vertex {start}: ", end='')
             return dfs_order
 
     def display(self):
