@@ -1,6 +1,6 @@
 class MaxHeap:
     def __init__(self):
-        self.heap = []  # Internal list to store heap elements
+        self.heap = []
 
     def parent(self, i):
         return (i - 1) // 2
@@ -12,7 +12,6 @@ class MaxHeap:
         return 2 * i + 2
 
     def heapify_down_up(self, index):
-        """Restore the heap property by moving the element at `index` upwards."""
         parent = self.parent(index)
         while index > 0 and self.heap[index] > self.heap[parent]:
             self.heap[index], self.heap[parent] = self.heap[parent], self.heap[index]
@@ -20,7 +19,6 @@ class MaxHeap:
             parent = self.parent(index)
 
     def heapify_up_down(self, index):
-        """Restore the heap property by moving the element at `index` downwards."""
         n = len(self.heap)
         largest = index
         left = self.left(index)
@@ -69,6 +67,15 @@ class MaxHeap:
 
     def display(self):
         print(self.heap)
+        
+    def count_leafs(self):
+        result = list()
+        for i in self.heap:
+            if self.left(i) > len(self.heap) and self.right(i) > len(self.heap):
+                result.append(i)
+        for i in result:
+            print(self.heap[i])
+        
 
 def heap_sort(elements):
     heap = MaxHeap()
@@ -81,6 +88,7 @@ def heap_sort(elements):
         sorted_list.append(heap.delete_root())
 
     return sorted_list[::-1]
+
 
 
 a = MaxHeap()
