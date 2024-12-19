@@ -71,7 +71,7 @@ class MaxHeap:
     def count_leafs(self):
         result = list()
         for i in self.heap:
-            if self.left(i) > len(self.heap) and self.right(i) > len(self.heap):
+            if self.left(i) > len(self.heap)-1:
                 result.append(i)
         for i in result:
             print(self.heap[i])
