@@ -70,11 +70,10 @@ class MaxHeap:
         
     def count_leafs(self):
         result = list()
-        for i in self.heap:
+        for i in range(len(self.heap)):
             if self.left(i) > len(self.heap)-1:
                 result.append(i)
-        for i in result:
-            print(self.heap[i])
+        return len(result)
         
 
 def heap_sort(elements):
@@ -93,15 +92,14 @@ def heap_sort(elements):
 
 a = MaxHeap()
 
-a.insert(30)
-a.insert(50)
-a.insert(20)
-a.insert(10)
-a.insert(15)
+a.insert(1)
+a.insert(2)
+a.insert(3)
+a.insert(4)
 a.insert(5)
-a.insert(32)
-a.delete(30)
-
+a.insert(6)
+a.insert(7)
+a.count_leafs()
 a.display()
 
 
