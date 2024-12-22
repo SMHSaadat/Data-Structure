@@ -1,13 +1,19 @@
 class dynamci_queue:
-    def __init__(self):
+    def __init__(self, limit=10):
+        self.limit = limit
         self.queue = []
     
     def enqueue(self, data):
+        if len(self.queue) > self.limit:
+            print('full')
+            return
         self.queue.append(data)
+        self.limit+=1
     
     def dequeue(self):
         if not self.is_empty():
             self.queue.pop(0)
+            self.limit -= 1
         else:
             print('empty')
 
